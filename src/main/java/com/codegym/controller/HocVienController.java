@@ -53,7 +53,7 @@ public class HocVienController {
             return modelAndView;
         }
         iHocVienService.save(hocVien);
-        ModelAndView modelAndView = new ModelAndView("/redirect:/home");
+        ModelAndView modelAndView = new ModelAndView("redirect:/home");
         return modelAndView;
     }
 

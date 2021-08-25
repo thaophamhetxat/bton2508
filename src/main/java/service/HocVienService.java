@@ -30,7 +30,7 @@ public class HocVienService implements IHocVienService {
 
     @Override
     public ArrayList<HocVien> findAllByName(String name) {
-        return null;
+        return iHocVienRepo.findAllByName(name);
     }
 
     @Override

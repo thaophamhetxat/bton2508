@@ -24,8 +24,13 @@
         <td><input th:field="${list.address}"></td>
         <td><input th:field="${list.phone}"></td>
         <td><input th:field="${list.email}"></td>
-        <td><input th:field="${list.classroom}"></td>
-
+      <tr>
+        <td>Classroom</td>
+        <td><select th:field="*{list.classroom}">
+          <option th:each="c: ${listClassroom}" th:value="${c.idClass}" th:text="${c.nameClass}"
+          ></option>
+        </select></td>
+      </tr>
       </tr>
       </tbody>
     </table>

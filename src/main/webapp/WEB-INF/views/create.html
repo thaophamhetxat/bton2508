@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Table Create HocVien</h2>
+    <form action="/create" method="post" th:object="${listClass}">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Classroom</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input name="name"></td>
+                <td><input type="datetime-local" name="date"></td>
+                <td><input name="address"></td>
+                <td><input name="phone"></td>
+                <td><input name="email"></td>
+                <td><select th:field="*{classroom}">
+                    <option th:each="cl: ${classroomList}" th:value="${cl.idClass}" th:text="${cl.nameClass}"></option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <span style="color: red" th:if="${#fields.hasErrors('name')}"
+                          th:errors="*{name}"></span>
+                </td>
+                <td></td>
+                <td> <span style="color: red" th:if="${#fields.hasErrors('address')}"
+                           th:errors="*{address}"></span>
+                </td>
+                <td></td>
+                <td> <span style="color: red" th:if="${#fields.hasErrors('email')}"
+                           th:errors="*{email}"></span>
+                </td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-success">Create Hoc vien</button>
+        <a href="/home" class="btn btn-success">Quit</a>
+
+    </form>
+</div>
+
+</body>
+</html>

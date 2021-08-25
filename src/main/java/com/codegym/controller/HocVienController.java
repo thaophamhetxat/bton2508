@@ -3,6 +3,7 @@ package com.codegym.controller;
 import moduls.Classroom;
 import moduls.HocVien;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -32,9 +33,9 @@ public class HocVienController {
     }
 
     @RequestMapping("home")
-    public ModelAndView home() {
+    public ModelAndView home(@RequestParam(defaultValue = "0") int pageNumber,@RequestParam(defaultValue = "5") int sizePage) {
         ModelAndView modelAndView = new ModelAndView("home");
-        modelAndView.addObject("list", iHocVienService.findAll());
+        modelAndView.addObject("list", iHocVienService.findAll(PageRequest.of(pageNumber, sizePage)));
         return modelAndView;
     }
 
